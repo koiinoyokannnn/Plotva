@@ -1,12 +1,9 @@
 #pragma once
 #include <vector>
-#include "iostream"
-const unsigned int N = 8;
+#include <iostream>
+extern unsigned int N;  // Теперь extern, определяется в main
 
-const std::vector<std::pair<int, int>> MOVES = {
-    {1, -2}, {2, -1}, {2, 1}, {1, 2},
-    {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2}
-};
+extern std::vector<std::pair<int, int>> MOVES;  // Теперь extern
 
 bool checkMove(int &X, int &Y, std::pair<int, int> move);
 
@@ -17,7 +14,7 @@ public:
     bool passed;
 };
 
-std::vector<std::vector<Cell>> newBoard();
+std::vector<std::vector<Cell>> newBoard(int startX, int startY);
 
 void drawCells(std::vector<std::vector<Cell>> cells);
 
