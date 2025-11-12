@@ -30,12 +30,3 @@ int countMovesFrom(int x, int y, const std::vector<std::vector<Cell>>& cells) {
     }
     return movesCount;
 }
-
-void drawCells(std::vector<std::vector<Cell>> cells) {
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            std::cout << cells[i][j].x << ',' << cells[i][j].y << "(" << countMovesFrom(i, j, cells) << ")" << " ";
-        }
-        std::cout << std::endl;
-    }
-}
