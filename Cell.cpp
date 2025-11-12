@@ -2,7 +2,7 @@
 
 std::vector<std::vector<Cell>> newBoard(int startX, int startY) {
     std::vector<std::vector<Cell>> board(N, std::vector<Cell>(N));
-    board[startX][startY].passed = true;  // ← ЭТУ СТРОКУ Я ПРОПУСТИЛ
+    board[startX][startY].passed = true;
     return board;
 }
 
