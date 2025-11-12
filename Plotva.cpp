@@ -1,16 +1,16 @@
-#include "Plotva.hpp"
+#include "Plotva.h"
 
 void Plotva::nextMove(std::vector<std::vector<Cell>> &cells) {
     std::vector<std::pair<int, int>> possibleMoves;
     std::vector<int> moveScores;
-    
-    std::cout << "(" << nowI << ", " << nowJ << ") -> ";
-    
+
+    std::cout << nowI << " " << nowJ;
+
     // Проверяем все возможные ходы из текущей позиции
     for (auto &move : MOVES) {
         int newX = nowI + move.first;
         int newY = nowJ + move.second;
-        
+
         // Проверяем, что ход допустим и клетка не посещена
         if (checkMove(nowI, nowJ, move) && !cells[newX][newY].passed) {
             possibleMoves.push_back({newX, newY});
@@ -19,12 +19,12 @@ void Plotva::nextMove(std::vector<std::vector<Cell>> &cells) {
             moveScores.push_back(score);
         }
     }
-    
+
     if (possibleMoves.empty()) {
-        std::cout << "No possible moves from (" << nowI << ", " << nowJ << ")!" << std::endl;
+        std::cout << "\nNo possible moves from (" << nowI << ", " << nowJ << ")!" << std::endl;
         return;
     }
-    
+
     // Находим ход с минимальным score (правило Варнсдорфа)
     int bestIndex = 0;
     int minScore = moveScores[0];
@@ -34,14 +34,14 @@ void Plotva::nextMove(std::vector<std::vector<Cell>> &cells) {
             bestIndex = i;
         }
     }
-    
+
     // Выполняем лучший ход
     auto bestMove = possibleMoves[bestIndex];
     nowI = bestMove.first;
     nowJ = bestMove.second;
-    
+
     // Помечаем новую клетку как посещенную
     cells[nowI][nowJ].passed = true;
-    
-    std::cout << "(" << nowI << ", " << nowJ << ")\n";
+
+    std::cout << " " << nowI << " " << nowJ << "\n";
 }

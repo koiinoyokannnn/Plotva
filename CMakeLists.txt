@@ -5,6 +5,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(PlotvaNEW main.cpp
         Cell.cpp
-        Cell.hpp
+        Cell.h
         Plotva.cpp
-        Plotva.hpp)
+        Plotva.h)

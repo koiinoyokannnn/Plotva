@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "Cell.hpp"
-#include "Plotva.hpp"
+#include "Cell.h"
+#include "Plotva.h"
 #include <ctime>
 
 unsigned int N;
@@ -11,13 +11,10 @@ std::vector<std::pair<int, int>> MOVES = {
 };
 
 int main() {
-    std::cout << "Enter board size N: ";
-    std::cin >> N;
+    int startX, startY;
+    std::cin >> N >> startX >> startY;
     if (N < 5)
         return 1;
-    int startX, startY;
-    std::cout << "Enter starting position (x y, from 0 to " << (N-1) << "): ";
-    std::cin >> startX >> startY;
     if (startX < 0 || startX >= N || startY < 0 || startY >= N) {
         std::cout << "Invalid starting position!" << std::endl;
         return 1;
@@ -30,7 +27,6 @@ int main() {
     Plotva newPlotva(startX, startY);
     clock_t startTime = clock();
     for (int i = 0; i < (N*N-1); i++) {
-        std::cout << "#" << (i+1) << ":\n";
         newPlotva.nextMove(cells);
     }
     clock_t endTime = clock();

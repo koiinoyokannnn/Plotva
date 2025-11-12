@@ -1,4 +1,4 @@
-#include "Cell.hpp"
+#include "Cell.h"
 
 std::vector<std::vector<Cell>> newBoard(int startX, int startY) {
     std::vector<std::vector<Cell>> cells(N, std::vector<Cell>(N));
@@ -34,7 +34,7 @@ int countMovesFrom(int x, int y, const std::vector<std::vector<Cell>>& cells) {
 void drawCells(std::vector<std::vector<Cell>> cells) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            std::cout << cells[i][j].x << cells[i][j].y << "(" << countMovesFrom(i, j, cells) << ")" << " ";
+            std::cout << cells[i][j].x << ',' << cells[i][j].y << "(" << countMovesFrom(i, j, cells) << ")" << " ";
         }
         std::cout << std::endl;
     }
