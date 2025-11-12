@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
-#include "Cell.h"
-#include "Knight.h"
 #include <ctime>
 #include <iomanip>
+#include "Cell.h"
+#include "Knight.h"
 
 unsigned int N;
 std::vector<std::pair<int, int>> MOVES = {
@@ -21,25 +21,19 @@ int main() {
     }
 
     std::vector<std::vector<Cell>> cells = newBoard(startX, startY);
-    Knight newPlotva(startX, startY);
+    Knight knight(startX, startY);
 
     clock_t startTime = clock();
-    bool success = true;
-    for (int i = 0; i < (N*N-1); i++) {
-        if (!newPlotva.nextMove(cells)) {
-            success = false;
-            break;
-        }
-    }
+    bool success = knight.findTour(cells);
     clock_t endTime = clock();
     double milliseconds = (double)(endTime - startTime) / CLOCKS_PER_SEC * 1000;
 
-    // Выводим время ДО ходов
     std::cout << std::fixed << std::setprecision(6) << milliseconds << std::endl;
 
-    // Затем выводим маршрут
     if (success) {
-        newPlotva.printPath();
+        knight.printPath();
+    } else {
+        return 1;
     }
 
     return 0;

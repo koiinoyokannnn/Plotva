@@ -1,18 +1,19 @@
 #pragma once
 #include "Cell.h"
-#include <algorithm>
-#include <iostream>
+#include "iostream"
+#include <vector>
 
 class Knight {
 private:
-    int nowI;
-    int nowJ;
+    int nowI, nowJ;
     std::vector<std::pair<int, int>> path;
+
+    bool warnsdorffOptimized(std::vector<std::vector<Cell>>& cells);
+
 public:
     Knight(int startX, int startY) : nowI(startX), nowJ(startY) {
         path.push_back({startX, startY});
     }
-    bool nextMove(std::vector<std::vector<Cell>> &cells);
-    std::pair<int, int> getPosition() const { return {nowI, nowJ}; }
+    bool findTour(std::vector<std::vector<Cell>>& cells);
     void printPath();
 };
